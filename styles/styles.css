@@ -10,6 +10,7 @@
     rgba(46, 47, 66, 0.7),
     rgba(46, 47, 66, 0.7)
   );
+  --transition-dur-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -140,6 +141,11 @@ span {
   gap: 40px;
 }
 
+.link {
+  transition: color var(--transition-dur-func);
+  position: relative;
+}
+
 .link:hover,
 .link:focus {
   color: var(--accent-color);
@@ -150,6 +156,23 @@ span {
 
 .item > .btn-active-page-portfolio {
   color: var(--accent-color);
+}
+
+.item > .btn-active-page-studio {
+  color: var(--accent-color);
+}
+
+.nav-link-studio::after,
+.nav-link-portfolio::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  left: 0;
+  bottom: 0;
 }
 
 /* ----------------------------------contacts-------------------------- */
@@ -223,15 +246,14 @@ span {
   padding-top: 16px;
   padding-bottom: 16px;
 
-  /* min-width: 169px; */
-  /* height: 56px; */
   left: 636px;
   top: 428px;
+
+  transition: background var(--transition-dur-func);
 }
 .main-btn:hover,
 .main-btn:focus {
   background: var(--accent-color);
-  color: #ffffff;
 }
 
 /* --------------------------------Hidden title--------------------------------  */
@@ -269,9 +291,6 @@ span {
   align-items: center;
   border-radius: 4px;
   margin-bottom: 8px;
-}
-
-.description-icon {
 }
 
 /* ------------------------------------about------------------------------------  */
@@ -368,6 +387,7 @@ span {
   justify-content: center;
   align-items: center;
   background-color: #4d5ae5;
+  transition: background-color var(--transition-dur-func);
 }
 
 .team-soc-link:is(:hover, :focus) {
@@ -406,10 +426,13 @@ span {
   align-items: center;
 
   color: #8e8f99;
+
+  transition: border-color var(--transition-dur-func);
 }
 
 .customers-icon {
   fill: currentColor;
+  transition: color var(--transition-dur-func);
 }
 
 .customers-link:is(:hover, :focus) {
@@ -465,6 +488,7 @@ span {
   justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color var(--transition-dur-func);
 }
 
 .bottom-soc-link:is(:hover, :focus) {
@@ -495,6 +519,11 @@ span {
   padding-right: 24px;
   padding-top: 12px;
   padding-bottom: 12px;
+
+  transition: color var(--transition-dur-func),
+    background-color var(--transition-dur-func),
+    box-shadow var(--transition-dur-func),
+    border-color var(--transition-dur-func);
 }
 
 .button-list {
@@ -514,6 +543,7 @@ span {
 }
 
 /* --------------------------------------------List apps---------------------------------------------- */
+
 .list-item-title {
   font-weight: 500;
   font-size: 20px;
@@ -564,6 +594,34 @@ span {
 .card-set-link:is(:hover, :focus) {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+.card-list-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-text-overlay {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  transform: translate(0, 100%);
+  transition: transform var(--transition-dur-func);
+
+  background-color: #4d5ae5;
+  color: var(--secondary-bg-color);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  padding: 40px 32px 164px;
+}
+
+.card-set-link:hover .card-text-overlay,
+.card-set-link:focus .card-text-overlay {
+  transform: translate(0, 0);
 }
 
 /* --------------------------------------------logo-link--------------------------------------------  */
